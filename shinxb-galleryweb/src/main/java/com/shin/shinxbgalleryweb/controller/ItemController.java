@@ -8,6 +8,7 @@ import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
+import result.ServiceResult;
 import service.IItemService;
 
 import javax.annotation.Resource;
@@ -54,9 +55,10 @@ public class ItemController {
         @ApiImplicitParam(name = "pageCount", value = "每页条数")
     })
     @GetMapping()
-    public IPage<Item> findListByPage(@RequestParam Integer page,
-                                   @RequestParam Integer pageCount){
-        return itemService.findListByPage(page, pageCount);
+    public ServiceResult<IPage<Item>> findListByPage(@RequestParam Integer page,
+                                                     @RequestParam Integer pageCount){
+        IPage<Item> listByPage = itemService.findListByPage(page, pageCount);
+        return ServiceResult.success(listByPage);
     }
 
     @ApiOperation(value = "id查询")
