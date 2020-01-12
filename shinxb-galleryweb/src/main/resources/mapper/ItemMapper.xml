@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shin.shinxbgalleryweb.dao.ItemMapper">
+
+        <!-- 通用查询映射结果 -->
+        <resultMap id="BaseResultMap" type="bean.Item">
+                    <id column="id" property="id"/>
+                    <result column="title" property="title"/>
+                    <result column="ProjectCycle" property="ProjectCycle"/>
+                    <result column="roles" property="roles"/>
+                    <result column="AppliedTechnology" property="AppliedTechnology"/>
+                    <result column="profile" property="profile"/>
+                    <result column="Demoaddress" property="Demoaddress"/>
+                    <result column="screenshot" property="screenshot"/>
+        </resultMap>
+
+        <!-- 通用查询结果列 -->
+        <sql id="Base_Column_List">
+            id, title, ProjectCycle, roles, AppliedTechnology, profile, Demoaddress, screenshot
+        </sql>
+
+
+</mapper>
