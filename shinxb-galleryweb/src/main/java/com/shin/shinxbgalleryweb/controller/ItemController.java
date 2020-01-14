@@ -7,11 +7,14 @@ import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import result.ServiceResult;
 import service.IItemService;
 
 import javax.annotation.Resource;
+import javax.validation.Valid;
+import java.util.ArrayList;
 
 /**
  * <p>
@@ -33,8 +36,12 @@ public class ItemController {
 
     @ApiOperation(value = "新增")
     @PostMapping()
-    public int add(@RequestBody Item item){
-        return itemService.add(item);
+    public ServiceResult<Object> add(@Valid @RequestBody Item item, BindingResult result){
+        if (result.hasErrors()) {
+            return ServiceResult.failure(ServiceResult.HTTPCODE_REQUEST_ERROR,result.getFieldErrors().toString());
+        }
+        int add = itemService.add(item);
+        return add==1?ServiceResult.success("新增成功"):ServiceResult.failure(String.valueOf(add));
     }
 
     @ApiOperation(value = "删除")
@@ -64,6 +71,8 @@ public class ItemController {
     @ApiOperation(value = "id查询")
     @GetMapping("{id}")
     public Item findById(@PathVariable Long id){
+        ArrayList<Object> list = new ArrayList<>();
+        list.forEach(a->a.toString());
         return itemService.findById(id);
     }
 

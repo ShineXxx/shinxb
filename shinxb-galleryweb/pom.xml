@@ -11,6 +11,7 @@
 	<groupId>com.shin</groupId>
 	<artifactId>shinxb-galleryweb</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+	<!--<packaging>war</packaging>-->
 	<name>shinxb-galleryweb</name>
 	<description>作品展示</description>
 

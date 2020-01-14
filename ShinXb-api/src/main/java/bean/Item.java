@@ -9,6 +9,7 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
+import org.hibernate.validator.constraints.NotBlank;
 
 import java.io.Serializable;
 
@@ -34,6 +35,7 @@ public class Item implements Serializable {
     private Long id;
 
     @ApiModelProperty(value = "项目标题")
+    @NotBlank(message = "项目标题不能为空")
     private String title;
 
     @ApiModelProperty(value = "项目周期")
