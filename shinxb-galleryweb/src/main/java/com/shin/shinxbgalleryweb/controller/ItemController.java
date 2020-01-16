@@ -18,7 +18,7 @@ import java.util.ArrayList;
 
 /**
  * <p>
- *  前端控制器
+ *  作品展示项目对象 前端控制器
  * </p>
  *
  * @author Morty
