@@ -71,8 +71,6 @@ public class ItemController {
     @ApiOperation(value = "id查询")
     @GetMapping("{id}")
     public Item findById(@PathVariable Long id){
-        ArrayList<Object> list = new ArrayList<>();
-        list.forEach(a->a.toString());
         return itemService.findById(id);
     }
 
